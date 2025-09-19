@@ -29,7 +29,7 @@ DATABASE_URL="mysql://root:password@127.0.0.1:3306/salesdb"
 ```
 For the test environement modify the .env.test :
 ```bash
-DATABASE_URL="mysql://root:password@127.0.0.1:3306/salesdb_test"
+DATABASE_URL="mysql://root:password@127.0.0.1:3306/salesdb"
 ```
 ### Run migrations
 ```bash
