@@ -41,7 +41,7 @@ php bin/console doctrine:migrations:migrate  --env=test
 ```
 
 ## 2. Import CSV
-place the csv file in /var/data/sales.csv
+ the csv file is in /var/data/sales.csv
 run the command :
 ```bash
 php bin/console app:import-sales storage/app/sales.csv
