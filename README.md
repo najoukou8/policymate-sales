@@ -103,3 +103,4 @@ Only one test exist, the one that tests the import command
 - Implement chunked import for very large CSV files
 - Add more tests
 - Create  the columns of a table automatically from the CSV headers via the import command
+- Add more verification in the import
