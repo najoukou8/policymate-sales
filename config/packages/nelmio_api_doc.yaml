@@ -1,0 +1,97 @@
+nelmio_api_doc:
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
+    documentation:
+        info:
+            title: Sales project
+            description: This is an awesome app!
+            version: 1.0.0
+
+        paths:
+            /api/report/top-products:
+                get:
+                    tags:
+                        - Reports
+                    summary: get top N products by revenue
+                    parameters:
+                            - name: limit
+                              in: query
+                              description: Number of top products to return
+                              required: false
+                              schema:
+                                  type: integer
+                                  default: 3
+                    responses:
+                        '200':
+                            description: List of top products
+                            content:
+                                application/json:
+                                    schema:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                productSku:
+                                                    type: string
+                                                productName:
+                                                    type: string
+                                                revenue:
+                                                    type: string
+
+            /api/report/monthly-revune:
+                get:
+                    tags:
+                        - sales
+                    summary: get monthly revenue
+                    parameters:
+                        - name: year
+                          in: query
+                          description: the year
+                          required: true
+                          schema:
+                              type: integer
+                    responses:
+                        '200':
+                            description: List of monthly revenue
+                            content:
+                                application/json:
+                                    schema:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                date:
+                                                    type: string
+                                                revenue:
+                                                    type: string
+
+            /api/report/top-customers:
+                get:
+                    tags:
+                        - sales
+                    summary: get top customers by revenue
+                    parameters:
+                        - name: limit
+                          in: query
+                          description: Number of top customers to return
+                          required: false
+                          schema:
+                              type: integer
+                              default: 3
+                    responses:
+                        '200':
+                            description: List of top customers
+                            content:
+                                application/json:
+                                    schema:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                customerEmail:
+                                                    type: string
+                                                revenue:
+                                                    type: string
+                                                totalOrders:
+                                                    type: string
