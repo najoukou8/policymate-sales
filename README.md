@@ -44,7 +44,7 @@ php bin/console doctrine:migrations:migrate  --env=test
  the csv file is in /var/data/sales.csv
 run the command :
 ```bash
-php bin/console app:import-sales storage/app/sales.csv
+php bin/console app:import-sales /var/data/sales.csv
 ```
 Valid rows are imported into the sale table
 Invalid rows are logged in the import_error table
