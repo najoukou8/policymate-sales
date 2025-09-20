@@ -43,7 +43,9 @@ class SaleRepository extends ServiceEntityRepository
     {
         $qb= $this->createQueryBuilder('s')
             ->select('s.productSku, s.productName, SUM(s.unitPrice * s.quantity) AS revenue')
-            ->groupBy('s.productSku')
+            // Every column in your SELECT list must either be part of an aggregate function because of SQL "only_full_group_by" rule.
+            // Otherwise the api/top-products endpoint will return an SQL error.
+            ->groupBy('s.productSku, s.productName') 
             ->orderBy('revenue', 'DESC')
             ->setMaxResults($limit);
 
