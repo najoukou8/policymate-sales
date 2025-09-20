@@ -30,6 +30,14 @@ class ImportSalesCommand extends Command
         ;
     }
 
+    // You should absolutely use transactions when doing bulk inserts/updates.
+    // This will ensure that either all your changes are applied, or none at all in case of error.
+    // So you don't get partial updates which are often hard to recover from.
+
+    // As you very well mentioned, the algorithm is not optimal for large files.
+
+    // Try to break down your methods into smaller ones.
+    // A good practice is usually < 20 lines per method.
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
