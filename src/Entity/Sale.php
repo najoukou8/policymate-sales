@@ -46,11 +46,14 @@ class Sale
      */
     private $quantity;
 
-    public function getOrderId(): string
+    // Your order id returns a string while both your migration and entity define it as an integer.
+    // Be sure to be consistent with your types.
+    // You should usually declare(strict_types=1); at the top of your PHP files.
+    public function getOrderId(): int
     {
         return $this->orderId;
     }
-    public function setOrderId(string $orderId): self
+    public function setOrderId(int $orderId): self
     {
         $this->orderId = $orderId; return $this;
     }
