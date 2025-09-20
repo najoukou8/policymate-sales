@@ -29,7 +29,8 @@ class ReportController extends AbstractController
         return $this->json($results);
     }
     /**
-     * @Route("/api/report/monthly-revune", name="api_monthly_revenue", methods={"GET"})
+     * Attention of typo in the route name!
+     * @Route("/api/report/monthly-revenue", name="api_monthly_revenue", methods={"GET"})
      */
    public function monthlyRevenue(Request $request, SaleRepository $saleRepository): JsonResponse {
         $year= $request->query->get('year', date('Y'));
