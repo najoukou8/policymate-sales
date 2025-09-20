@@ -8,6 +8,16 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class ImportSalesCommandTest extends KernelTestCase
 {
+    protected function setUp(): void
+    {
+        self::bootKernel();
+        
+        $entityManager = self::$container->get('doctrine')->getManager();
+        $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($entityManager);
+        $schemaTool->dropSchema($entityManager->getMetadataFactory()->getAllMetadata());
+        $schemaTool->createSchema($entityManager->getMetadataFactory()->getAllMetadata());
+    }
+
     public function testImportValidCsv(): void
     {
         $kernel = self::bootKernel();
