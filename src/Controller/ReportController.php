@@ -21,7 +21,7 @@ class ReportController extends AbstractController
         $limit= $request->query->get('limit', 3);
         if( !ctype_digit((string) $limit) || (int) $limit<=0){
             return new JsonResponse([
-                'error' => 'limit must be a positive integer',
+                'error' => 'limit must be a positive integer', 400 // Never forget to add a proper HTTP status code when returning an error in a JSON response. Otherwise consuming clients might not handle it properly.
             ]);
         }
         $results = $saleRepository->findTopProducts($limit);
@@ -36,7 +36,7 @@ class ReportController extends AbstractController
         $year= $request->query->get('year', date('Y'));
        if( !ctype_digit((string) $year) || (int) $year<=0){
            return new JsonResponse([
-               'error' => 'the year must be a positive integer',
+               'error' => 'the year must be a positive integer', 400
            ]);
        }
         $results = $saleRepository->findMonthlyRevenue($year);
@@ -49,7 +49,7 @@ class ReportController extends AbstractController
         $limit= $request->query->get('limit',3);
         if( !ctype_digit((string) $limit) || (int) $limit<=0){
             return new JsonResponse([
-                'error' => 'limit must be a positive integer',
+                'error' => 'limit must be a positive integer', 400
             ]);
         }
         $results = $saleRepository->findTopCustomers($limit);
