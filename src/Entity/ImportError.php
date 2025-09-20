@@ -18,7 +18,8 @@ class ImportError
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * I never worked with Symphony ORM, but I needed to add the `row_number` here to avoid SQL error
+     * @ORM\Column(name="`row_number`", type="integer")
      */
     private $rowNumber;
 
