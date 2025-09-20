@@ -8,6 +8,9 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class ImportSalesCommandTest extends KernelTestCase
 {
+    // For your test to pass, you need to refresh the database schema before each test.
+    // You can do this by using the SchemaTool from Doctrine or install one of the many libraries that help with this.
+    // Otherwise the test will work the first time "Imported: 1, Skipped: 1" but fail the next time (Imported: 0).
     protected function setUp(): void
     {
         self::bootKernel();
